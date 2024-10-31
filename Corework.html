@@ -1,0 +1,24 @@
+
+<script>
+    var fname = "Karim";
+    let lname = "Hassan";
+    const nochange = "this is constant varaible";
+    console.log(fname);
+    console.log(nochange);
+    function fun(){
+        let funct = "this is checking of function";
+        console.log(funct);
+    }
+    function parent(){
+       let checkparent =  "this is parent of child";
+       console.log(checkparent)
+       function child() {
+        let checkchild = "this is child of the parent";
+        console.log(checkchild);
+        console.log(checkparent)
+       }
+       child();  
+    }
+    fun();
+    parent();
+</script>
