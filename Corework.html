@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click Me!</button>
+</body>
+</html>
 <script>/*
     var fname = "Karim";
     let lname = "Hassan";
@@ -66,14 +76,34 @@
     // ,5000)}
 
     // console.log("kla;sjfdlak")
-    function parameter(a,b){
-        a();
-        b();
-    }
-    parameter(function a(){
-        console.log("a")
-    },function b(){
-        console.log("b")
-    });
+
+// the parameter work in javascript
+    // let z="w";
+    // function parameter(a,b,g){
+    //     let c="c"
+    //     a();
+    //     b();
+    // }
+    // parameter(function a(){
+    //     let w = "name";
+    //     console.log("a")
+    //     function child(){
+    //         console.log(w)
+    //     }
+    //     child();
+    // },function b(){
+    //     console.log("b")
+    // },z);
+// add event listener in web
+    function clicker(){
+        let count = 0;
+         document.getElementById("btn").addEventListener("click",function abc(){
+             console.log("check",count++);
+            })
+}
+let a = "check";
+clicker();
+
+
 
 </script>
