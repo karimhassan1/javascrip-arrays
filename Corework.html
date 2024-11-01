@@ -59,12 +59,21 @@
     // {
     //     let c = 7;
     // }
-    for(var a= 0 ; a <10;a++){
-    setTimeout(function (){
-        console.log(a)
-    }
-    ,5000)}
+    // for(var a= 0 ; a <10;a++){
+    // setTimeout(function (){
+    //     console.log(a)
+    // }
+    // ,5000)}
 
-    console.log("kla;sjfdlak")
+    // console.log("kla;sjfdlak")
+    function parameter(a,b){
+        a();
+        b();
+    }
+    parameter(function a(){
+        console.log("a")
+    },function b(){
+        console.log("b")
+    });
 
 </script>
