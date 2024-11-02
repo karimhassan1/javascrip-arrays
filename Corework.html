@@ -123,16 +123,25 @@
     // let check =5;
     // var a = 4;
 
-    function outermost(){
-        function outer(num){
-            return num*3;
-        }
-        return outer;
-    }
+    // function outermost(){
+    //     function outer(num){
+    //         return num*3;
+    //     }
+    //     return outer;
+    // }
     
-    let getouterfunc = outermost();
-    let result = getouterfunc(3);
-    console.log(result);
+    // let getouterfunc = outermost();
+    // let result = getouterfunc(3);
+    // console.log(result);
+
+    function outer(){
+        counter = 0;
+        function increament(){
+            counter++
+        }
+        increament()
+    }
+    outer();
 
     
 
