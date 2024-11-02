@@ -8,19 +8,25 @@
 <body>
     
     <script>
+
         let radius = [1,2,3,4];
-        function math(a,b){
-            console.log(a + b);
-            return a + b;
+        function area(loop){
+            return Math.PI * loop * loop;
+        }
+        function circumference(radius){
+            return Math.PI * radius;
+        }
+        let a = area;
+        let b = circumference;
+        
+        function calculate(radiusInput,finder){
+            for(i=0;i<radiusInput.length;i++){
+                console.log(finder(radiusInput[i]));
+            };
         };
-        let maths = math(1,2);
-        console.log(maths);
-        function calculate(radiusInput){
-            return radiusInput;
-
-        };
-
-        console.log(calculate(radius));
+        calculate(radius,a);
+        calculate(radius,b)
+        // calculate(check)
 
     </script>
 </body>
