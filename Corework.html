@@ -135,13 +135,14 @@
     // console.log(result);
 
     function outer(){
-        counter = 0;
+        let counter = 0;
         function increament(){
             counter++
         }
-        increament()
+        return increament;
     }
-    outer();
+    let output = outer();
+    output();
 
     
 
