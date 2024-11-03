@@ -9,28 +9,54 @@
 
     
     <script>
-        var a = 5;
-        let z = 6;
-        const x = 8;
-        {
-            var b = 7;
-            let z = 10;
-            const x ="I am checking the const x";
-            function block_scope(){
-                let check = "check";
-                console.log(check,z,x,b)
-                function child(){
+        // var a = 5;
+        // let z = 6;
+        // const x = 8;
+        // {
+        //     var b = 7;
+        //     let z = 10;
+        //     const x ="I am checking the const x";
+        //     function block_scope(){
+        //         let check = "check";
+        //         console.log(check,z,x,b)
+        //         function child(){
 
-                    let child = "i am child of the block_scope function";
-                    console.log(child , check)
+        //             let child = "i am child of the block_scope function";
+        //             console.log(child , check)
+        //         }
+        //         child();
+        //     }
+        //     block_scope();
+        //     {
+        //         let x = "this is the another bloack inside the block"
+        //     }
+        // }
+         
+        // functin scope practice;
+        let z = "this is the script memory z with let"
+        var a = "this is the global memory a with var"
+        const x = "this is the script memeory x with const"
+        function outer_most(){
+            let z = "this is the z of the outermost with let";
+            var a = "this is the a of the outermost with var";
+            const x = "this is the x of the outermost with const";
+
+            function outer(){
+                let z = "this is the z of the outer with let";
+                var a = "this is the a of the outer with var";
+                const x = "this is the x of the outer with const";
+
+                function child(){
+                    let z = "this is the z of the child with let"
+                    var a = "this is the a of the child with var";
+                    const x = "this is the x of the child with const";
                 }
                 child();
             }
-            block_scope();
-            {
-                let x = "this is the another bloack inside the block"
-            }
+            outer();
+
         }
+        outer_most();
     </script>
 </body>
 </html>
