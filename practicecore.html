@@ -33,30 +33,52 @@
         // }
          
         // functin scope practice;
-        let z = "this is the script memory z with let"
-        var a = "this is the global memory a with var"
-        const x = "this is the script memeory x with const"
+        let z = "this is the script memory z with let";
+        var a = "this is the global memory a with var";
+        const x = "this is the script memeory x with const"; 
+        let globalclosure = "this is the global closure";
         function outer_most(){
             let z = "this is the z of the outermost with let";
             var a = "this is the a of the outermost with var";
             const x = "this is the x of the outermost with const";
+            let closure = "this is the closures in all";
 
             function outer(){
                 let z = "this is the z of the outer with let";
                 var a = "this is the a of the outer with var";
                 const x = "this is the x of the outer with const";
+                let outerclosure = "this is the closure of the outer function";
 
                 function child(){
                     let z = "this is the z of the child with let"
                     var a = "this is the a of the child with var";
                     const x = "this is the x of the child with const";
+                    console.log(a);
+                    console.log(x);
+                    console.log(z);
+                    console.log(closure);
+                    console.log(globalclosure);
+                    console.log(outerclosure);
                 }
                 child();
+                console.log(a);
+                console.log(x);
+                console.log(z);
+                console.log(closure);
+                console.log(globalclosure);
             }
             outer();
+            console.log(a);
+            console.log(x);
+            console.log(z);
+            console.log(closure);
+            console.log(globalclosure)
 
         }
         outer_most();
+        console.log(a);
+        console.log(x);
+        console.log(z);
     </script>
 </body>
 </html>
