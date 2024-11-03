@@ -33,52 +33,92 @@
         // }
          
         // functin scope practice;
-        let z = "this is the script memory z with let";
-        var a = "this is the global memory a with var";
-        const x = "this is the script memeory x with const"; 
-        let globalclosure = "this is the global closure";
-        function outer_most(){
-            let z = "this is the z of the outermost with let";
-            var a = "this is the a of the outermost with var";
-            const x = "this is the x of the outermost with const";
-            let closure = "this is the closures in all";
+        // let z = "this is the script memory z with let";
+        // var a = "this is the global memory a with var";
+        // const x = "this is the script memeory x with const"; 
+        // let globalclosure = "this is the global closure";
+        // function outer_most(){
+        //     let z = "this is the z of the outermost with let";
+        //     var a = "this is the a of the outermost with var";
+        //     const x = "this is the x of the outermost with const";
+        //     let closure = "this is the closures in all";
 
-            function outer(){
-                let z = "this is the z of the outer with let";
-                var a = "this is the a of the outer with var";
-                const x = "this is the x of the outer with const";
-                let outerclosure = "this is the closure of the outer function";
+        //     function outer(){
+        //         let z = "this is the z of the outer with let";
+        //         var a = "this is the a of the outer with var";
+        //         const x = "this is the x of the outer with const";
+        //         let outerclosure = "this is the closure of the outer function";
 
-                function child(){
-                    let z = "this is the z of the child with let"
-                    var a = "this is the a of the child with var";
-                    const x = "this is the x of the child with const";
-                    console.log(a);
-                    console.log(x);
-                    console.log(z);
-                    console.log(closure);
-                    console.log(globalclosure);
-                    console.log(outerclosure);
-                }
-                child();
-                console.log(a);
-                console.log(x);
-                console.log(z);
-                console.log(closure);
-                console.log(globalclosure);
+        //         function child(){
+        //             let z = "this is the z of the child with let"
+        //             var a = "this is the a of the child with var";
+        //             const x = "this is the x of the child with const";
+        //             console.log(a);
+        //             console.log(x);
+        //             console.log(z);
+        //             console.log(closure);
+        //             console.log(globalclosure);
+        //             console.log(outerclosure);
+        //         }
+        //         child();
+        //         console.log(a);
+        //         console.log(x);
+        //         console.log(z);
+        //         console.log(closure);
+        //         console.log(globalclosure);
+        //     }
+        //     outer();
+        //     console.log(a);
+        //     console.log(x);
+        //     console.log(z);
+        //     console.log(closure);
+        //     console.log(globalclosure)
+
+        // }
+        // outer_most();
+        // console.log(a);
+        // console.log(x);
+        // console.log(z);
+
+        // filter map and reduce function work
+        // let arr = [1,2,3,4];
+        // let arr2 = [4,5,6,7,8,9]
+        // function map(inputArr){
+        //     let output = [];
+        //     for(i=0;i<inputArr.length;i++){
+        //         output.push(2 * inputArr[i])
+        //     }
+        //     return output;
+        // }
+        // let result = map(arr);
+        // console.log(result);
+        // let result2 = map(arr2);
+        // console.log(result2);
+        // function mapcheck(x){
+        //     return x *2;
+        // }
+        // let outputmap = arr.map(mapcheck);
+        // console.log("---------------------------------------------------------")
+        // console.log(outputmap);
+        // let output2 = arr2.map(mapcheck);
+        // console.log(output2);
+        let arr = [1,2,3,4,5];
+        function map(inputFunc,inputArr){
+            let output = [];
+            for(i=0;i < inputArr.length; i++){
+                output.push((inputFunc(inputArr[i])));
+
             }
-            outer();
-            console.log(a);
-            console.log(x);
-            console.log(z);
-            console.log(closure);
-            console.log(globalclosure)
-
+            return output;
         }
-        outer_most();
-        console.log(a);
-        console.log(x);
-        console.log(z);
+        function twice(x){
+              return x*2
+        }
+       console.log(twice(5))
+        function cubic(x){
+            return x *3
+        }
+        
     </script>
 </body>
 </html>
