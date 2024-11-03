@@ -102,22 +102,61 @@
         // console.log(outputmap);
         // let output2 = arr2.map(mapcheck);
         // console.log(output2);
-        let arr = [1,2,3,4,5];
-        function map(inputFunc,inputArr){
-            let output = [];
-            for(i=0;i < inputArr.length; i++){
-                output.push((inputFunc(inputArr[i])));
+    //     let arr = [1,2,3,4,5];
+    //     function map(inputFunc,inputArr){
+    //         let output = [];
+    //         for(i=0;i < inputArr.length; i++){
+    //             output.push((inputFunc(inputArr[i])));
 
+    //         }
+    //         return output;
+    //     }
+    //     function twice(x){
+    //           return x*2
+    //     }
+    //     function cubic(x){
+    //         return x *3
+    //     }
+    //    let result =  map(twice,arr);
+    //    console.log(result);
+
+    //    let output = arr.map(twice);
+    //    console.log(output);
+
+// end the map function functionality
+// start of the inbuilt filter function 
+        // let arr = [1,2,3,4,5,6,7,8,9];
+        // function greaterthan5(x){
+        //     return x > 5;
+        // }
+        // let output = arr.filter(greaterthan5)
+        // console.log(output)
+// end of the inbuilt in filter function
+
+// custome code of the filter function
+        let arr = [1,2,3,4,5,6,7,8,9];
+        function filter(inputArr,arraFunc){
+            let output = [];
+            for(i=0 ;i < inputArr.length;i++){
+                // let condition = arraFunc(inputArr[i])
+                // console.log(condition);
+                if(arraFunc(inputArr[i]) !== undefined){
+                    output.push(arraFunc(inputArr[i]))
+                }
+                
+                
             }
             return output;
         }
-        function twice(x){
-              return x*2
+        function greaterthan5(x){
+            if(x > 2 ){
+                return x;
+            }
         }
-       console.log(twice(5))
-        function cubic(x){
-            return x *3
-        }
+        let result = filter(arr,greaterthan5);
+        console.log(result);
+        
+    
         
     </script>
 </body>
