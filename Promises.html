@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises work and create my own promise</title>
+</head>
+<body>
+    
+
+    <script>
+        let cart = ["Shoes","Clothes","Casmatics","Electronic Device"];
+        
+        let promise = createOrder("khoes");
+
+        promise.then(function (result){
+            orderId(result)
+        });
+
+        function createOrder(selection){
+            let pr = new Promise(function (resolve,reject){
+                if(cartSanatize(selection)){                  
+                    let err = new Error("the selection is not valid please select true one");
+                    reject(err);
+                }else{
+                    let orderId = "123456";
+                    if(orderId){
+                        resolve("the order id is " +orderId);
+                    }
+                }
+            });
+
+            return pr;
+        }
+
+        function cartSanatize(select,cartPut = cart){
+            cartPut.filter(cartValidate);
+        }
+        function cartValidate(x){
+            if(x = )
+        }
+        
+        function orderId(ord){
+            console.log(ord)
+        }
+        let a = 1 + "abc";
+
+    </script>
+</body>
+</html>
