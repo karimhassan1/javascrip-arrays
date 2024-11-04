@@ -134,27 +134,60 @@
 // end of the inbuilt in filter function
 
 // custome code of the filter function
-        let arr = [1,2,3,4,5,6,7,8,9];
-        function filter(inputArr,arraFunc){
-            let output = [];
-            for(i=0 ;i < inputArr.length;i++){
-                // let condition = arraFunc(inputArr[i])
-                // console.log(condition);
-                if(arraFunc(inputArr[i]) !== undefined){
-                    output.push(arraFunc(inputArr[i]))
-                }
+
+        // let arr = [1,2,3,4,5,6,7,8,9];
+        // function filter(inputArr,arraFunc){
+        //     let output = [];
+        //     for(i=0 ;i < inputArr.length;i++){
+        //         // let condition = arraFunc(inputArr[i])
+        //         // console.log(condition);
+        //         if(arraFunc(inputArr[i]) !== undefined){
+        //             output.push(arraFunc(inputArr[i]))
+        //         }
                 
                 
-            }
-            return output;
+        //     }
+        //     return output;
+        // }
+        // function greaterthan5(x){
+        //     if(x > 2 ){
+        //         return x;
+        //     }
+        // }
+        // let result = filter(arr,greaterthan5);
+        // console.log(result);
+
+        //---------------------------------------------------------------------------------//
+        
+        let z = 5;
+        var a = 3;
+        const y = 8;
+        {
+            let z = 6;
+            const y = 10;
+            var a = 8;
+            console.log(a)
+            console.log(y)
+            console.log(z)
         }
-        function greaterthan5(x){
-            if(x > 2 ){
-                return x;
+        function scoping(){
+            var z = 2;
+            let x = 7;
+            const a = 1;
+            console.log(z)
+            console.log(x)
+            console.log(a)
+            function child(){
+                let z = 2;
+                const x= z;
+                var b = a; 
             }
+            child();
         }
-        let result = filter(arr,greaterthan5);
-        console.log(result);
+        scoping();
+        console.log(a);
+        console.log(z);
+        console.log(y)
         
     
         
