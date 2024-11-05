@@ -11,13 +11,28 @@
         let pr = new Promise((resolve,reject) => {
             resolve("The promise is resolve");
         })
-        pr.then(result => console.log(result))
-        function takedata(){
-            pr.then((result)=>{
-                console.log(result)
-            })
+
+        async function asyncpromise(){
+            return "checking";
         }
-        takedata();
+        asyncpromise().then(result => console.log(result));
+
+        function withoutasync(){
+            return "another checking";
+        }
+        withoutasync().then(result => console.log(result))
+
+        // pr.then(result => console.log(result))
+
+        // function takedata(){
+
+        //     pr.then((result)=>{
+        //         console.log(result)
+        //     })
+        // }
+
+        // takedata();
+
     </script>
 </body> 
 </html>
