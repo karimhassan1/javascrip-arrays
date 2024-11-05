@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Async Await functionality core working</title>
 </head>
 <body>
     
-</body>
+    <script>
+        let pr = new Promise((resolve,reject) => {
+            resolve("The promise is resolve");
+        })
+        pr.then(result => console.log(result))
+        function takedata(){
+            pr.then((result)=>{
+                console.log(result)
+            })
+        }
+        takedata();
+    </script>
+</body> 
 </html>
