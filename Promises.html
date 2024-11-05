@@ -10,22 +10,26 @@
 
     <script>
         let cart = ["Shoes","Clothes","Casmatics","Electronic Device"];
-        
-        let promise = createOrder("khoes");
+        setTimeout(() =>{
+            let promise = createOrder("Casmatics");
 
-        promise.then(function (result){
-            orderId(result)
-        });
+            promise.then(function (result){
+                orderId(result)
+            }
+                        )
+                    }
+                ,11000)
+        
 
         function createOrder(selection){
             let pr = new Promise(function (resolve,reject){
-                if(cartSanatize(selection)){                  
+                if(!cartSanatize(selection)){                  
                     let err = new Error("the selection is not valid please select true one");
                     reject(err);
                 }else{
-                    let orderId = "123456";
+                    let orderId = "12345 :come from data base";
                     if(orderId){
-                        resolve("the order id is " +orderId);
+                        resolve("the order id is " + orderId);
                     }
                 }
             });
@@ -33,17 +37,29 @@
             return pr;
         }
 
-        function cartSanatize(select,cartPut = cart){
-            cartPut.filter(cartValidate);
+        function cartSanatize(select){
+            for(i=0;i<cart.length;i++){
+                if(select == cart[i]){
+                    return true
+                }
+            }
+            return false
         }
-        function cartValidate(x){
-            if(x = )
+        function orderId(x){
+            console.log(x)
         }
-        
-        function orderId(ord){
-            console.log(ord)
+
+        function maincounter(){
+            let count = 10;
+            
+            for(let i=1;i<=10;i++){
+                setTimeout(()=>{
+                    console.log(count--)
+                }, i * 1000)
+            }
+
         }
-        let a = 1 + "abc";
+        maincounter();
 
     </script>
 </body>
