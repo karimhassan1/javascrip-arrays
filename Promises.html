@@ -11,13 +11,9 @@
     <script>
         let cart = ["Shoes","Clothes","Casmatics","Electronic Device"];
         setTimeout(() =>{
-            let promise = createOrder("Casmatics");
-
-            promise.then(function (result){
-                orderId(result)
+            createOrder("Casmatics").then((result)=> orderId(result))
             }
-                        )
-                    }
+                        
                 ,11000)
         
 
@@ -38,7 +34,7 @@
         }
 
         function cartSanatize(select){
-            for(i=0;i<cart.length;i++){
+            for( i=0;i<cart.length;i++){
                 if(select == cart[i]){
                     return true
                 }
@@ -50,16 +46,36 @@
         }
 
         function maincounter(){
-            let count = 10;
             
+            let counter = 10;
             for(let i=1;i<=10;i++){
                 setTimeout(()=>{
-                    console.log(count--)
-                }, i * 1000)
+                    console.log(counter--)
+                } ,  i * 1000)
             }
 
         }
         maincounter();
+        function promise2(a){ 
+        let pr2 = new Promise(function(resolve,reject){
+            if(a > 3){
+            resolve("the promise is resolve");
+            }
+            if(a < 3){
+                let error = new Error("The promis is rejected")
+                reject(error)
+            }
+
+        }
+    )
+    return pr2;
+    }
+    promise2(2)
+    .then(accept=>console.log(accept))
+    .catch(err => console.log(err.message))
+    ;
+
+        
 
     </script>
 </body>
