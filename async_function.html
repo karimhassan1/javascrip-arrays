@@ -9,18 +9,26 @@
     
     <script>
         let pr = new Promise((resolve,reject) => {
-            resolve("The promise is resolve");
-        })
+            setTimeout(() => {
+                resolve("The promise is resolve");
+                            }
+                        ,11000)
+            
+                                                }
+                    )
 
-        async function asyncpromise(){
-            return "checking";
+        async function takedata(){
+            console.log("This is before resolve the promise")
+            counter()
+            let takepromise = await pr;
+            console.log(takepromise);
+            console.log("this is checking after promise")
         }
-        asyncpromise().then(result => console.log(result));
+        let count = 10;
 
-        function withoutasync(){
-            return "another checking";
-        }
-        withoutasync().then(result => console.log(result))
+        takedata();
+        console.log("after the takedata function")
+
 
         // pr.then(result => console.log(result))
 
@@ -32,7 +40,15 @@
         // }
 
         // takedata();
-
+            function counter(){
+                console.log("When the count down is end the promise should call itself")
+                for(i=1;i<=10;i++){
+                    setTimeout(()=>{
+                        console.log(count--);
+                    }, i * 1000)
+                    
+                }
+            }
     </script>
 </body> 
 </html>
