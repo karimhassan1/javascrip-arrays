@@ -85,16 +85,28 @@
             }
         }
         let pr = new Promise(function(resolve,reject){
-            if(condition(6)){
+            setTimeout(()=>{
+                if(condition(6)){
                 reject("Your's promse is been rejected from the function at that time");
-            }else{
-                resolve({key1:1,key2:2});
-            }
+                }else{
+                resolve("The promise is been resolved")
+                }
+            },10000)
+            
         });
-        pr
-        .then(promise =>  console.log(promise));
+        console.log("before promise")
+        async function output(){
+            console.log("i am also inside of the output resolve but before")
+            let awaitoutput = await pr;
+            console.log(awaitoutput);
+            console.log("i am inside the output of promise but later");
+        }
+        console.log(output())
+        
         // .then(result2 => console.log(result2))
         ;
+
+        console.log("after the promise")
 
     </script>
 </body> 
