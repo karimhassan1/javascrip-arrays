@@ -8,47 +8,74 @@
 <body>
     
     <script>
-        let pr = new Promise((resolve,reject) => {
-            setTimeout(() => {
-                resolve("The promise is resolve");
-                            }
-                        ,11000)
+        // let pr = new Promise((resolve,reject) => {
+        //     setTimeout(() => {
+        //         resolve("The promise is resolve");
+        //                     }
+        //                 ,11000)
             
-                                                }
-                    )
+        //                                         }
+        //             )
 
-        async function takedata(){
-            console.log("This is before resolve the promise")
-            counter()
-            let takepromise = await pr;
-            console.log(takepromise);
-            console.log("this is checking after promise")
-        }
-        let count = 10;
-
-        takedata();
-        console.log("after the takedata function")
-
-
-        // pr.then(result => console.log(result))
-
-        // function takedata(){
-
-        //     pr.then((result)=>{
-        //         console.log(result)
-        //     })
+        // async function takedata(){
+        //     console.log("This is before resolve the promise")
+        //     counter()
+        //     let takepromise = await pr;
+        //     console.log(takepromise);
+        //     console.log("this is checking after promise")
         // }
+        // let count = 10;
 
         // takedata();
-            function counter(){
-                console.log("When the count down is end the promise should call itself")
-                for(i=1;i<=10;i++){
-                    setTimeout(()=>{
-                        console.log(count--);
-                    }, i * 1000)
+        // console.log("after the takedata function")
+
+
+        // // pr.then(result => console.log(result))
+
+        // // function takedata(){
+
+        // //     pr.then((result)=>{
+        // //         console.log(result)
+        // //     })
+        // // }
+
+        // // takedata();
+        //     function counter(){
+        //         console.log("When the count down is end the promise should call itself")
+        //         for(i=1;i<=10;i++){
+        //             setTimeout(()=>{
+        //                 console.log(count--);
+        //             }, i * 1000)
                     
-                }
-            }
+        //         }
+        //     }
+
+        //------------------------------------------------------------------------------------------------------------
+        //                                           Async await practice
+
+        async function asynccheck(){
+            return "check"
+        }
+        // let result = asynccheck().then(result1 => console.log(result1));
+        // let result = asynccheck().then(result => console.log(result));
+        // let result2 = asynccheck();
+        // console.log(result2);
+        // console.log(result)
+        // result.then(result2 => console.log(result2))
+        // let result2 =asynccheck();
+        // console.log(result)
+        // console.log(result2)
+        // result.then((check) => console.log(check));
+
+        // let a = asynccheck;
+        // let returnPromise = a().then(result => console.log(result));
+        // let newPromise = new Promise((resolve,reject) => {
+        //    resolve("the promise is resolve");
+        // })
+        // console.log(newPromise.then(result => console.log(result)))
+        // console.log(newPromise)
+        // console.log(a())
+
     </script>
 </body> 
 </html>
