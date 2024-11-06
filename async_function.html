@@ -51,7 +51,7 @@
         //     }
 
         //------------------------------------------------------------------------------------------------------------
-        //                                           Async await practice
+        //                                           promises and async await practice
 
         async function asynccheck(){
             return "check"
@@ -75,6 +75,27 @@
         // console.log(newPromise.then(result => console.log(result)))
         // console.log(newPromise)
         // console.log(a())
+        //-------------------------------------------------------------------------------------------------------//
+        //                              async await pracitce
+        async function condition(inputCondition){
+            if(inputCondition > 5){
+                return true;
+            }else{
+                return false;
+            }
+            condition();
+        }
+        let pr = new Promise(function(resolve,reject){
+            if(!codition){
+                reject("Your's promse is been rejected from the function at that time");
+            }else{
+                resolve("!Congratulation Your's promise his been complete");
+            }
+        });
+
+        async function asycnwithawait(){
+
+        }
 
     </script>
 </body> 
