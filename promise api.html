@@ -16,16 +16,18 @@ align-items: center; width: 100vw;height: 100vh;">
         })
         let p2 = new Promise((resolve,reject)=>{
             setTimeout(()=>{
-                reject("the p2 is resolve")
+                reject("the p2 is rejected")
             },5000)
         })
         let p3 = new Promise((resolve,reject)=>{
             setTimeout(()=>{
-                resolve("the p2 is resolve")
+                resolve("the p3 is resolve")
             },8000)
         })
-        Promise.all([p1,p2,p3]).then((result)=>{
+        Promise.any([p1,p2,p3]).then((result)=>{
             console.log(result)
+        }).catch(err=>{
+            console.error(err)
         })
 
     </script>
