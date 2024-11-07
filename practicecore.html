@@ -159,35 +159,67 @@
 
         //---------------------------------------------------------------------------------//
         
-        let z = 5;
-        var a = 3;
-        const y = 8;
+        // let z = 5;
+        // var a = 3;
+        // const y = 8;
+        // {
+        //     let z = 6;
+        //     const y = 10;
+        //     var a = 8;
+        //     console.log(a)
+        //     console.log(y)
+        //     console.log(z)
+        // }
+        // function scoping(){
+        //     var z = 2;
+        //     let x = 7;
+        //     const a = 1;
+        //     console.log(z)
+        //     console.log(x)
+        //     console.log(a)
+        //     function child(){
+        //         let z = 2;
+        //         const x= z;
+        //         var b = a;  
+        //     }
+        //     child();
+        // }
+        // scoping();
+        // console.log(a);
+        // console.log(z);
+        // console.log(y)
+        //-----------------------------------------------------------------------------------------//
+        //                          functionality of varaible memory working
+        var a = 5;
+        let z = 4;
+        const x = 7;
+        var a = 7;
+
+        //                          functionality of the block area
         {
-            let z = 6;
-            const y = 10;
-            var a = 8;
-            console.log(a)
-            console.log(y)
-            console.log(z)
-        }
-        function scoping(){
-            var z = 2;
-            let x = 7;
-            const a = 1;
-            console.log(z)
-            console.log(x)
-            console.log(a)
-            function child(){
-                let z = 2;
-                const x= z;
-                var b = a;  
+            const z = 8;
+            let a = 7;
+            function insideOfBlock(){
+                let a = 2;
+                console.log(a)
             }
-            child();
+            let arr = [1,2,3,4,5]
+            console.log(arr)
+            insideOfBlock()
         }
-        scoping();
-        console.log(a);
-        console.log(z);
-        console.log(y)
+        let arr = [8,9,10,11,12]
+        console.log(arr)
+        function insideOfBlock(){
+            let b = 7
+            console.log(b)
+        }
+        insideOfBlock();
+        function insideOfBlock(){
+            let c = 4
+            console.log(c)
+        }
+        insideOfBlock();
+        insideOfBlock()
         
     
         
