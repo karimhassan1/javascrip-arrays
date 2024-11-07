@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises All API</title>
+</head>
+<body style="box-sizing:border-box;overflow: hidden; background-image:linear-gradient(80deg,white,black); display:flex;justify-content: center;
+align-items: center; width: 100vw;height: 100vh;">
+    <h1>All four type of promises api checking</h1>
+    <script>
+        let p1 = new Promise((resolve,reject) =>{
+            setTimeout(()=>{
+                resolve("The p1 is resolve");
+            },2000)
+        })
+        let p2 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                reject("the p2 is resolve")
+            },5000)
+        })
+        let p3 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("the p2 is resolve")
+            },8000)
+        })
+        Promise.all([p1,p2,p3]).then((result)=>{
+            console.log(result)
+        })
+
+    </script>
+</body>
+</html>
