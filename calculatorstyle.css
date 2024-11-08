@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+.h-20{
+    height: 20% !important;
+}
+.w-22-5{
+    width: 22.5% !important;
+}
+.h-18{
+    height: 19% !important;
+}
+.w-35{
+    width: 35% !important;
+}
