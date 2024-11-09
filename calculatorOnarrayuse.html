@@ -43,7 +43,7 @@
                     <button class="w-22-5 rounded h-18" onclick="numberInput('+')">+</button>
                     <button class="w-35 rounded h-18" onclick="numberInput('0')">0</button>
                     <button class="w-22-5 rounded h-18" onclick="numberInput('.')">.</button>
-                    <button class="w-35 rounded h-18" onclick="">=</button>
+                    <button class="w-35 rounded h-18" id="calculate">=</button>
 
                 </section>
             </div>
@@ -85,7 +85,14 @@
                 arr = arr.slice(0,-1);
                 outputDiv.value = arr;
             })
-            
+            // ----------------------------------------------------------------------------------------------------------------
+            //                     calculation area
+
+            let calculate = document.querySelector('button[id = calculate]');
+            calculate.addEventListener('click',()=>{
+                let output = arr.split('+');
+                console.log(output)
+            })
         </script>
     </body>
 
