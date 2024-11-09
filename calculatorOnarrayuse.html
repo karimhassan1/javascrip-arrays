@@ -25,8 +25,8 @@
                 </section>
                 <section class="my-2 input h-75 d-flex flex-wrap justify-content-around">
 
-                    <button class="w-22-5 rounded h-18" onclick="">C</button>
-                    <button class="w-22-5 rounded h-18" onclick="">Del</button>
+                    <button class="w-22-5 rounded h-18" id="clear">C</button>
+                    <button class="w-22-5 rounded h-18" id="delLastone">Del</button>
                     <button class="w-22-5 rounded h-18" onclick="">S</button>
                     <button class="w-22-5 rounded h-18" onclick="numberInput('/')">÷</button>
                     <button class="w-22-5 rounded h-18" onclick="numberInput('7')">7</button>
@@ -71,7 +71,21 @@
             //----------------------------------------------------------------------------------------------------------------
             //                     Clear the whole calculation
 
+            let clearButton = document.querySelector('button[id = clear]');
+            clearButton.addEventListener('click',()=>{
+                arr = "";
+                outputDiv.value = arr;
+            })
+
             }
+            //----------------------------------------------------------------------------------------------------------------
+            //                       Delete the last one element
+            let delLastone = document.querySelector('button[id = delLastone]');
+            delLastone.addEventListener('click',()=>{
+                arr = arr.slice(0,-1);
+                outputDiv.value = arr;
+            })
+            
         </script>
     </body>
 
