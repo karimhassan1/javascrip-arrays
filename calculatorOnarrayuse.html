@@ -15,43 +15,52 @@
     </head>
     <body class="vw-100 vh-100">
         <main class="w-100 h-100 d-flex justify-content-center align-items-center">
-            <div class="w-25 h-75 border shadow-sm d-flex flex-column justify-content-center">
-                <section class="output h-20 border-bottom d-flex flex-column justify-content-between">
-                    <div class="w-100 h-50">
 
+                <div class="w-25 h-90 border shadow-sm d-flex flex-column justify-content-center rounded">
+                    <div class="w-100 h-10 bg-light">
+                        <h4 class="text-center">Simple Calculator</h4>
                     </div>
+                    <section class="output h-30 border-bottom d-flex flex-column justify-content-between">
+                        <div class="w-100 h-75 overflow-auto text-end border-bottom" id="old_calculation">
 
-                    <input type="text" class="w-100 h-50" value="" disabled>
-                </section>
-                <section class="my-2 input h-75 d-flex flex-wrap justify-content-around">
+                        </div>
 
-                    <button class="w-22-5 rounded h-18" id="clear">C</button>
-                    <button class="w-22-5 rounded h-18" id="delLastone">Del</button>
-                    <button class="w-22-5 rounded h-18" onclick="">S</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('/')">÷</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('7')">7</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('8')">8</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('9')">9</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('*')">x</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('4')">4</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('5')">5</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('6')">6</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('-')">-</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('1')">1</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('2')">2</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('3')">3</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('+')">+</button>
-                    <button class="w-35 rounded h-18" onclick="numberInput('0')">0</button>
-                    <button class="w-22-5 rounded h-18" onclick="numberInput('.')">.</button>
-                    <button class="w-35 rounded h-18" id="calculate">=</button>
+                        <input type="text" class="w-95 h-50 border-0 bg-transparent text-end fs-3" value="" disabled>
+                    </section>
+                    <section class="my-2 input h-75 d-flex flex-wrap justify-content-around">
 
-                </section>
-            </div>
+                        <button class="w-22-5 rounded rounded border-light h-18" id="clear">C</button>
+                        <button class="w-22-5 rounded  border-light h-18" id="delLastone">Del</button>
+                        <button class="w-22-5 rounded  border-light h-18"  onclick="">S</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('÷')">÷</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('7')">7</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('8')">8</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('9')">9</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('x')">x</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('4')">4</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('5')">5</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('6')">6</button>
+                        <button class="w-22-5 rounded  border-light h-18 fs-3" onclick="numberInput('-')">-</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('1')">1</button>
+                        <button class="w-22-5 rounded  border-light h-18" id="2" onclick="numberInput('2')">2</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('3')">3</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('+')">+</button>
+                        <button class="w-35 rounded  border-light h-18" onclick="numberInput('0')">0</button>
+                        <button class="w-22-5 rounded  border-light h-18" onclick="numberInput('.')">.</button>
+                        <button class="w-35 rounded  border-light h-18" id="calculate">=</button>
+
+                    </section>
+                </div>
         </main>
         <script>
+            //-----------------------------------------------------------------------------
+            //                          Global store data
+
             let arr = "";  
             let outputDiv = document.querySelector("input[disabled]");
-            console.log(outputDiv.value)           
+            console.log(outputDiv.value)    
+            
+
             // --------------------------------------------------------------------------------------------------------
             //                 Code of the put value in the output area of the calculation 
 
@@ -90,9 +99,72 @@
 
             let calculate = document.querySelector('button[id = calculate]');
             calculate.addEventListener('click',()=>{
-                let output = arr.split('+');
-                console.log(output)
+                if(arr == '' || arr == "0"){
+                    arr = '0';
+                    outputDiv.value = arr;
+                }
+                else{
+                    let multiplyReplace = arr.replace('x',"*");
+                    let divideReplace = multiplyReplace.replace("÷","/");
+                    let output = eval(divideReplace);
+                    let storeResult = String(output);
+                    newElementinnerHTML =  arr + "<br>" + "<b class='fs-3'>" + storeResult + "</b>" ;
+                    newElementclassName = "border-bottom h-100 fs-5";
+                    createElement("p",newElementinnerHTML,"old_calculation",newElementclassName);
+                    outputDiv.value = storeResult;
+                    arr = storeResult;
+                }
             })
+            //-------------------------------------------------------------
+            //                      button functionality
+
+            document.addEventListener("keydown",(event)=>{
+                // console.log("The press key is : " +event.key + " " +typeof(event.key));
+                if(event.key >= '0' && event.key <= '9' || event.key=='/' || event.key == '*' || event.key == '+' || event.key == '-'){
+                    arr += event.key;
+                    let lastIndex = arr[arr.length -1];
+                    let secondlastIndex =arr[arr.length -2];
+                    if(lastIndex == "/" || lastIndex == '*' || lastIndex == '+' || lastIndex == '-'){
+                        if(lastIndex == secondlastIndex){
+                            arr = arr.slice(0,-1);
+                            outputDiv.value = arr;
+                        }else{
+                            outputDiv.value = arr;
+                        }
+                    }else{
+                        outputDiv.value = arr;
+                        
+                    }
+                }else if(event.key == 'Enter'){
+                    if(arr == '0' || arr ==''){
+                        arr = '0';
+                    }else{
+                    let result = eval(arr);
+                    outputDiv.value = result;
+                    let storeResult = String(result);
+                    newElementinnerHTML =  arr + "<br>" + "<b class='fs-3'>" + storeResult + "</b>" ;
+                    newElementclassName = "border-bottom h-100 fs-5";
+                    createElement("p",newElementinnerHTML,"old_calculation",newElementclassName);
+                    outputDiv.value = storeResult;
+                    arr = storeResult;
+                    }
+                    
+                }else if(event.key == 'Backspace'){
+                    // console.log('check')
+                    arr = arr.slice(0,-1);
+                    outputDiv.value = arr;
+                    
+                }
+            })
+            // -----------------------------------------------------------------------
+            //                      This is code of making new element
+            function createElement(ElementName,innerHtml,parent,addClass){
+                let newElement = document.createElement(ElementName);
+                let parentElement = document.getElementById(parent);
+                newElement.innerHTML = innerHtml;
+                newElement.className = addClass;
+                parentElement.insertBefore(newElement,parentElement.firstChild);
+            }
         </script>
     </body>
 
