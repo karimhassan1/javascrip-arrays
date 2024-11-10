@@ -99,13 +99,13 @@
 
             let calculate = document.querySelector('button[id = calculate]');
             calculate.addEventListener('click',()=>{
-                if(arr == '' || arr == "0"){
+                    let multiplyReplace = arr.replace('x',"*");
+                    let divideReplace = multiplyReplace.replace("÷","/");
+                if(arr == '' || arr == "0" || ! /[+\-*/]/.test(divideReplace)){
                     arr = '0';
                     outputDiv.value = arr;
                 }
                 else{
-                    let multiplyReplace = arr.replace('x',"*");
-                    let divideReplace = multiplyReplace.replace("÷","/");
                     let output = eval(divideReplace);
                     let storeResult = String(output);
                     newElementinnerHTML =  arr + "<br>" + "<b class='fs-3'>" + storeResult + "</b>" ;
@@ -121,10 +121,17 @@
             document.addEventListener("keydown",(event)=>{
                 // console.log("The press key is : " +event.key + " " +typeof(event.key));
                 if(event.key >= '0' && event.key <= '9' || event.key=='/' || event.key == '*' || event.key == '+' || event.key == '-'){
-                    arr += event.key;
+                    if(event.key == "/"){
+                        arr += '÷';
+                    }else if(event.key == "*"){
+                        arr += 'x';
+                    }else{
+                        arr += event.key;
+                    }
+
                     let lastIndex = arr[arr.length -1];
                     let secondlastIndex =arr[arr.length -2];
-                    if(lastIndex == "/" || lastIndex == '*' || lastIndex == '+' || lastIndex == '-'){
+                    if(lastIndex == "÷" || lastIndex == 'x' || lastIndex == '+' || lastIndex == '-'){
                         if(lastIndex == secondlastIndex){
                             arr = arr.slice(0,-1);
                             outputDiv.value = arr;
@@ -136,17 +143,20 @@
                         
                     }
                 }else if(event.key == 'Enter'){
-                    if(arr == '0' || arr ==''){
-                        arr = '0';
+                        let multiplyReplace = arr.replace('x',"*");
+                        let divideReplace = multiplyReplace.replace("÷","/");
+                    if(divideReplace == '0' || divideReplace =='' ||!/[+\-*/]/.test(divideReplace)){
+                        arr = divideReplace;
+                        outputDiv.value = arr;
                     }else{
-                    let result = eval(arr);
-                    outputDiv.value = result;
-                    let storeResult = String(result);
-                    newElementinnerHTML =  arr + "<br>" + "<b class='fs-3'>" + storeResult + "</b>" ;
-                    newElementclassName = "border-bottom h-100 fs-5";
-                    createElement("p",newElementinnerHTML,"old_calculation",newElementclassName);
-                    outputDiv.value = storeResult;
-                    arr = storeResult;
+                        let result = eval(divideReplace);
+                        outputDiv.value = result;
+                        let storeResult = String(result);
+                        newElementinnerHTML =  arr + "<br>" + "<b class='fs-3'>" + storeResult + "</b>" ;
+                        newElementclassName = "border-bottom h-100 fs-5";
+                        createElement("p",newElementinnerHTML,"old_calculation",newElementclassName);
+                        outputDiv.value = storeResult;
+                        arr = storeResult;
                     }
                     
                 }else if(event.key == 'Backspace'){
