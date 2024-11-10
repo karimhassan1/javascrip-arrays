@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+.h-15{
+    height: 15% !important;
+}
+.h-35{
+    height: 35% !important;
+}
+.w-45{
+    width: 45% !important;
+}
+.w-10{
+    width: 10% !important;
+}
+.h-3{
+    height: 3% !important;
+}
+.h-50{
+    height: 50% !important;
+}
+.w-35{
+    width: 35% !important;
+}
+.w-25{
+    width: 25% !important;
+}
+.h-25{
+    height: 25% !important;
+}
+.h-20{
+    height: 20% !important;
+}
