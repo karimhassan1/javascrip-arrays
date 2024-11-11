@@ -99,7 +99,19 @@
             button.removeAttribute("disabled","");
             userGuess.removeAttribute("readonly","");
             body.classList.remove("bg-success")
-            body.classList.add("bg-dark")
+            body.classList.add("bg-dark");
+            score=20;
+            let oldscore = currentScore.innerText;
+            currentScore.innerText = score;
+            console.log(highScore.innerText);
+            if(highScore.innerText > oldscore){
+                highScore.innerText = score;
+            }else if(highScore.innerText == oldscore){
+                highScore.innerText = highScore.innerText;
+            }
+            else{
+                highScore.innerText = score;
+            }
             console.log(guessNumber)
         })
     </script>
