@@ -9,12 +9,13 @@
 </head>
 <body class="bg-dark vh-100 vw-100 text-white">
     <header class="h-15 d-flex justify-content-between align-items-center">
-        <button class="btn btn-light rounded-0 mx-5">Play Again</button>
+        <button class="btn btn-light rounded-0 mx-5" id="playAgain">Play Again</button>
+        <p class="mx-4 fs-5" id="emptyFieldOutPut"></p>
         <p class="mx-4 fs-5">Choose Number Between 0 to 20</p>
     </header>
     <main class="h-50 d-flex align-items-center">
         <div class="left w-45 bg-white h-3"></div>
-        <div class="center border w-10 h-50 d-flex align-items-center justify-content-center"><h1>0</h1></div>
+        <div class="center border w-10 h-50 d-flex align-items-center justify-content-center"><h1 id="winResult">?</h1></div>
         <div class="right w-45 bg-white h-3"></div>
 
     </main>
@@ -25,36 +26,81 @@
             <button class="w-25 h-20 my-3" id="putGuess">Check</button>
         </div>
         <div class="w-25">
-            <div class="border d-flex justify-content-between">
-                <p class="fs-4">Status:</p> 
-                <p class="fs-4 mx-4">Waiting for input</p>
-            </div>
-            <div class="border d-flex justify-content-between">
+            <div class="d-flex justify-content-between">
                 <p class="fs-4">Score:</p>
-                <p class="fs-4 mx-4">20</p>
+                <p class="fs-4 mx-4" id="currentScore"></p>
             </div>
-            <div class="border d-flex justify-content-between">
+            <div class="d-flex justify-content-between">
                 <p class="fs-4">Hight Score:</p>
-                <p class="fs-4 mx-4">0</p>
+                <p class="fs-4 mx-4" id="highScore">0</p>
             </div>
         </div>
 
     </footer>
     <script>
+        let emptyFieldOutput = document.getElementById("emptyFieldOutPut");
+        let button = document.querySelector("button[id=putGuess]");
+        let userGuess = document.querySelector('input[type=number]');
+        let resultOfStatus = document.getElementById("resultOfStatus");
+        let currentScore = document.getElementById("currentScore");
+        let winResult = document.getElementById("winResult");
+        let highScore = document.getElementById("highScore");
+        let playAgain = document.getElementById("playAgain");
+        let body = document.querySelector("body");
+        let score = 20;
+        currentScore.innerText = score;
         let GuessMe = function(){
             let GuessNumber = Math.trunc(Math.random()*21);
             return GuessNumber;
-
+        }
+        function outPutDisplay(){
+                    emptyFieldOutput.classList.remove("d-none");
+                    emptyFieldOutput.classList.add("border" ,"border-light" , "rounded","p-2","text-capitalize");
+                    currentScore.innerText = score;
         }
         let guessNumber = GuessMe();
-        console.log(guessNumber)
-        let button = document.querySelector("button[id=putGuess]");
-        let userGuess = document.querySelector('input[type=number]');
+        console.log(guessNumber);
+
+        
+        
         button.addEventListener("click",()=>{
             if(userGuess.value == ''){
-                console.log("Input Some Number")
+                emptyFieldOutput.innerHTML = "Please Put some value in the field";
+                emptyFieldOutput.classList.add("text-danger","border" ,"border-danger" , "rounded","p-2","text-capitalize");
+                emptyFieldOutput.classList.remove("d-none");
+                
+            }else{
+                emptyFieldOutput.classList.add("d-none");
+                let userGuessValue = Number(userGuess.value);
+                if(userGuessValue === guessNumber){
+                    emptyFieldOutput.innerText = "Congratulation You Win";
+                    winResult.innerText = guessNumber;
+                    highScore.innerText = score;
+                    button.setAttribute("disabled","");
+                    userGuess.setAttribute("readonly","");
+                    body.classList.remove("bg-dark")
+                    body.classList.add("bg-success")
+
+                    outPutDisplay();
+                }else if(userGuessValue > guessNumber){
+                    emptyFieldOutput.innerText = "⚠️ The value is High";
+                    score--;
+                    outPutDisplay();
+                }else if(userGuessValue < guessNumber){
+                    emptyFieldOutput.innerText = "⚠️ The value is Low";
+                    score--;
+                    outPutDisplay();
+                }
             }
 
+        })
+        playAgain.addEventListener("click",()=>{
+            guessNumber = GuessMe();
+            button.removeAttribute("disabled","");
+            userGuess.removeAttribute("readonly","");
+            body.classList.remove("bg-success")
+            body.classList.add("bg-dark")
+            console.log(guessNumber)
         })
     </script>
 
