@@ -23,7 +23,7 @@
                 </div>
                 <div class="h-30 border w-50 d-flex flex-column justify-content-center align-items-center border rounded">
                     <p class="fs-3 h-25">Current Score</p>
-                    <p class="fs-1 h-75">0</p>
+                    <p class="fs-1 h-75" id="player1CurrentScore">0</p>
                 </div>
             </div>
             <img src="./assests/images/start up.png" width="6%" height="12%" alt="Dice image" class="rounded-20px position-absolute top-40 start-45" id="diceImg">
@@ -40,10 +40,11 @@
                 </div>
                 <div class="h-30 border w-50 d-flex flex-column justify-content-center align-items-center border rounded">
                     <p class="fs-3 h-25">Current Score</p>
-                    <p class="fs-1 h-75">0</p>
+                    <p class="fs-1 h-75" id="player2CurrentScore">0</p>
                 </div>
             </div>
         </div>
+        <h1 id="winTimeh1" class=" p-4 d-none position-absolute top-50 start-30 text-black border border-success bg-white rounded"></h1>
     </main>
     <script>
         let rollButton = document.getElementById("rollButton");
@@ -52,43 +53,70 @@
         let player2TotalScoreOutput = document.getElementById("player2TotalScoreOutput");
         let player1FullArea = document.getElementById("player1FullArea");
         let player2FullArea = document.getElementById("player2FullArea");
+        let player1CurrentScore = document.getElementById("player1CurrentScore");
+        let player2CurrentScore = document.getElementById("player2CurrentScore");
+        let winTimeh1 = document.getElementById("winTimeh1");
         
+        function winTime(winner,user){
+            rollButton.setAttribute("disabled","");
+            winner.classList.remove("bg-dark");
+            winner.classList.add("bg-success");
+            winTimeh1.innerText = `The Winner Of The Game is : ${user}`
+            winTimeh1.classList.remove("d-none");
+
+
+
+        }
         function randomNumber(){
             let diceNumber = Math.ceil(Math.random()*6);
             diceImg.setAttribute("src",`./assests/images/img_${diceNumber}.png`);
-            if(player1){
-                if(player1TotalScore === 100){
-
-                }else{
+                if(player1){
+                
                     player1TotalScore += diceNumber
                     player1TotalScoreOutput.innerText = player1TotalScore;
+                    player1CurrentScore.innerText = diceNumber;
                     if(diceNumber === 6){
-                         player1 = true
+                        if(player1TotalScore <100 && player2TotalScore < 100){
+                            player1 = true
+                        }else{
+                            winTime(player1FullArea,"Player 1");
+                        }
                     }else{
-                        player2FullArea.classList.add("bg-dark")
-                        player1FullArea.classList.remove("bg-dark");
-                        player1 = false;
+                        if(player1TotalScore <100 && player2TotalScore < 100){
+                            player2FullArea.classList.add("bg-dark")
+                            player1FullArea.classList.remove("bg-dark");
+                            player1 = false;
+                        }else{
+                            winTime(player1FullArea,"Player 1");
+                        }
                     }
                 }
                 
-            }else{
-                if(player2TotalScore === 100){
-
-                }else{
+                else{
                     player2TotalScore += diceNumber;
                     player2TotalScoreOutput.innerText = player2TotalScore;
+                    player2CurrentScore.innerText = diceNumber;
                     if(diceNumber === 6){
-                         player1 = false;
+                        if(player1TotalScore < 100 && player2TotalScore < 100){
+                            player1 = false;
+                        }
+                        else{
+                            winTime(player2FullArea,"Player 2");
+                        }
                     }else{
-                        player1FullArea.classList.add("bg-dark")
-                        player2FullArea.classList.remove("bg-dark");
-                        player1 = true;
+                        if(player1TotalScore <100 && player2TotalScore < 100){
+                            player1FullArea.classList.add("bg-dark")
+                            player2FullArea.classList.remove("bg-dark");
+                            player1 = true;
+                        }else{
+                            winTime(player2FullArea,"Player 2")
+                        }
                 }
                 }
                 
             }
 
-        }
+        
         let player1TotalScore = 0;
         let player2TotalScore = 0;
         let player1 = true;
