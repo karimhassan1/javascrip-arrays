@@ -11,14 +11,14 @@
 <body class="vh-100 vw-100 text-white">
     <main class="w-100 h-100 d-flex justify-content-center align-items-center">
         <div class="w-75 border h-75 border-dark rounded light-dark-background d-flex">
-            <div class="border-end w-50 d-flex flex-column justify-content-around align-items-center">
+            <div class="border-end w-50 d-flex flex-column justify-content-around align-items-center bg-dark" id="player1FullArea">
                 <div class="h-10 fs-2">
                     <p>Player 1</p>
                 </div>
                 <div class="h-40 w-50 d-flex flex-column justify-content-center align-items-center border rounded">
                     <p class="fs-2 h-25">Score</p>
                     <div class="h-50">
-                        <p class="fs-1">0</p>
+                        <p class="fs-1" id="player1TotalScoreOutput">0</p>
                     </div>
                 </div>
                 <div class="h-30 border w-50 d-flex flex-column justify-content-center align-items-center border rounded">
@@ -28,14 +28,14 @@
             </div>
             <img src="./assests/images/start up.png" width="6%" height="12%" alt="Dice image" class="rounded-20px position-absolute top-40 start-45" id="diceImg">
             <button class="rounded position-absolute top-60 start-50 px-3 btn btn-light" id="rollButton">Roll Me !</button>
-            <div class="border-end w-50 d-flex flex-column justify-content-around align-items-center">
+            <div class="border-start w-50 d-flex flex-column justify-content-around align-items-center" id="player2FullArea">
                 <div class="h-10 fs-2">
                     <p>Player 2</p>
                 </div>
                 <div class="h-40 w-50 d-flex flex-column justify-content-center align-items-center border rounded">
                     <p class="fs-2 h-25">Score</p>
                     <div class="h-50">
-                        <p class="fs-1">0</p>
+                        <p class="fs-1" id="player2TotalScoreOutput">0</p>
                     </div>
                 </div>
                 <div class="h-30 border w-50 d-flex flex-column justify-content-center align-items-center border rounded">
@@ -48,11 +48,51 @@
     <script>
         let rollButton = document.getElementById("rollButton");
         let diceImg = document.getElementById("diceImg");
+        let player1TotalScoreOutput = document.getElementById("player1TotalScoreOutput");
+        let player2TotalScoreOutput = document.getElementById("player2TotalScoreOutput");
+        let player1FullArea = document.getElementById("player1FullArea");
+        let player2FullArea = document.getElementById("player2FullArea");
+        
         function randomNumber(){
             let diceNumber = Math.ceil(Math.random()*6);
             diceImg.setAttribute("src",`./assests/images/img_${diceNumber}.png`);
-        }
+            if(player1){
+                if(player1TotalScore === 100){
 
+                }else{
+                    player1TotalScore += diceNumber
+                    player1TotalScoreOutput.innerText = player1TotalScore;
+                    if(diceNumber === 6){
+                         player1 = true
+                    }else{
+                        player2FullArea.classList.add("bg-dark")
+                        player1FullArea.classList.remove("bg-dark");
+                        player1 = false;
+                    }
+                }
+                
+            }else{
+                if(player2TotalScore === 100){
+
+                }else{
+                    player2TotalScore += diceNumber;
+                    player2TotalScoreOutput.innerText = player2TotalScore;
+                    if(diceNumber === 6){
+                         player1 = false;
+                    }else{
+                        player1FullArea.classList.add("bg-dark")
+                        player2FullArea.classList.remove("bg-dark");
+                        player1 = true;
+                }
+                }
+                
+            }
+
+        }
+        let player1TotalScore = 0;
+        let player2TotalScore = 0;
+        let player1 = true;
+        let player2 = false;
 
         rollButton.addEventListener("click",randomNumber)
     </script>
