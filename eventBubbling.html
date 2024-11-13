@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="vw-100 vh-100 border d-flex justify-content-center align-items-center">
+    <div class="grandParent w-75 h-75 border border-dark d-flex justify-content-center align-items-center" id="grandParent">
+
+        <div class="parent border border-dark w-75 h-75 d-flex justify-content-center align-items-center" id="parent">
+
+            <div class="child w-75 h-75 border border-dark d-flex justify-content-center align-items-center" id="child">
+
+                <div class="childSon border border-dark w-75 h-75" id="childSon">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function elementById(id){
+            return document.getElementById(id);
+        }
+        let grandParent = elementById("grandParent");
+        let parent = elementById("parent");
+        let child = elementById("child");
+        let childson = elementById("childSon");
+
+        grandParent.addEventListener("click",()=>{
+            console.log("This is from grandParent")
+        },true)
+
+        parent.addEventListener("click",()=>{
+            console.log("This is from parent")
+        })
+
+        child.addEventListener("click",()=>{
+            console.log("This is from child")
+        },true)
+
+        childson.addEventListener("click",()=>{
+            console.log("This is from childson")
+        },true)
+    </script>
+</body>
+</html>
