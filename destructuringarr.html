@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructring html</title>
+</head>
+<body>
+    
+    <script>
+        "use strict"
+        let arr = [1,2,3,4];
+        const [a,b,c,d] = arr;
+        console.log(a,b,c,d);
+        let obj = {
+            f_name : "karim",
+            l_name : "Hassan",
+            email : "karimhassan263372@gmail.com",
+            ful_detail : function (){
+              let ful_Detail = this.f_name +" " + this.l_name
+              console.log("my ful name is : " + ful_Detail)
+            }
+
+        }
+        obj.ful_detail();
+
+        const {z,x,w,v} = obj;
+        console.log(z)
+        console.log(x)
+        console.log(w)
+        console.log(v)
+    </script>
+</body>
+</html>
