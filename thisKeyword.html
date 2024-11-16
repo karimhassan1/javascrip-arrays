@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This KeyWord Use</title>
+</head>
+<body>
+    <button id="khan">checking</button>
+    
+    <script>
+        "use strict"
+        console.log(this);
+        document.getElementById("khan").addEventListener("click",()=>{
+            console.log(this)
+        });
+        function checkingThis(){
+            console.log(this)
+        }
+        checkingThis();
+        let arrFunc = ()=>{
+            console.log(this)
+        }
+        arrFunc();
+
+        let obj = {
+            f_fame : "karim",
+            l_name : "Hassan",
+           traditional : function traditional(){
+                console.log(this);
+                console.log(this.f_fame)
+           },
+           arrFunc : () => {
+            console.log(this)
+           }
+
+
+        }
+        function inWindow(){
+            console.log(this)
+        }
+        inWindow();
+        obj.traditional();
+        obj.arrFunc()
+        arrFunc();
+    
+    </script>
+</body>
+</html>
