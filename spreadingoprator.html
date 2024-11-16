@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreading array and object</title>
+</head>
+<body>
+    
+    <script>
+        // const arrTop = [7,8,9,3]
+        // let arr = [1,2,3,4,5,...arrTop];
+        // let [a,b,c,...check] = arr;
+        // // console.log(check)
+        // console.log(a,b,c,check)
+        // console.log(check[0]);
+        // console.log(arr);
+        // -------------------------------------------------------------------------------------
+        // "use strict"
+
+        let obj = {
+            f_name: "karim",
+            l_name: "Hassan",
+            ful_name : "checking",
+            traditionalFunc : function (){
+                console.log("this is use of traditional function");
+            },
+            arrFunc : ()=>{
+                console.log("this is a array funct");
+            }
+        }
+        let {a,b,c} = obj;
+        console.log(a) // this give undefined output
+        console.log(obj.ful_name)
+        a = 0;
+
+        //Not logica operator 
+
+        console.log(a||"khan" );
+
+        //Nulist and optional chaining
+        let location1 = (getLocation)=>{
+            let lat = getLocation.coords.latitude;
+            let long = getLocation.coords.longitude;
+            console.log(lat , long)
+        }
+        let error = (error)=>{
+            console.log(error)
+        }
+        console.log(a ?? "khan");
+        if(navigator.geolocation && navigator.geolocation.getCurrentPosition) console.log("this is true")
+
+        if(navigator.geolocation?.getCurrentPosition){
+            navigator.geolocation.getCurrentPosition(location1,error);
+        }
+
+        
+    </script>
+</body>
+</html>
