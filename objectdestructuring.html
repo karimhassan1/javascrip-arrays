@@ -38,7 +38,7 @@
                 ]
             ],
             goal : [
-                "karim" , "ffatt" , "hussain" , "abuzar"
+                "karim" , "ffatt" , "hussain" , "abuzar" ,"4"
             ],
             odd : {
                 infinityThought : 12,
@@ -46,16 +46,23 @@
                 professor : 5
             }
         }
-        let {player} = football;
-        console.log(player);
+        let {player,goal,odd} = football;
         let [captain1,...other1] = player[0];
         let [captain2,...other2] = player[1];
-
         let totalPlayer = [...player[0],...player[1]];
-        console.log(`The player one Team Captain is : ${captain1} and other team is ${other1} `  )
-        console.log(`The player two team captain is ; ${captain2} and the other team is ${other2}`)
-        console.log(totalPlayer);
+        let {infinityThought:infinityThoughtScore,draw,professor:professorScore} = odd;
         
-    </script>
+        let [player1,player2,player3,player4] = goal;
+        let i = 0;
+        for(const player of goal){
+            console.log((i++ +1) + " " + player)
+        }
+        console.log(`the total goal is : ${i}`)
+
+        console.log(infinityThoughtScore < professorScore || console.log("The winner is infinity thought"))
+        console.log(infinityThoughtScore > professorScore || console.log("The winner is professor"))
+        
+    </script> 
+
 </body>
 </html>
