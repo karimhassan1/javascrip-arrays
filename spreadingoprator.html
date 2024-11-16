@@ -29,6 +29,8 @@
                 console.log("this is a array funct");
             }
         }
+        console.log(Object.keys(obj))
+        console.log("---------------------")
         let {a,b,c} = obj;
         console.log(a) // this give undefined output
         console.log(obj.ful_name)
@@ -45,13 +47,14 @@
             console.log(lat , long)
         }
         let error = (error)=>{
-            console.log(error)
+            console.log(error.message)
         }
         console.log(a ?? "khan");
         if(navigator.geolocation && navigator.geolocation.getCurrentPosition) console.log("this is true")
 
         if(navigator.geolocation?.getCurrentPosition){
             navigator.geolocation.getCurrentPosition(location1,error);
+
         }
 
         
