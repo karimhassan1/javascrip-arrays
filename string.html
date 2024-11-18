@@ -9,16 +9,24 @@
 <body>
 
     <main class="vh-100 vw-100 bg-black d-flex flex-column  justify-content-center align-items-center">
-        <textarea name="text-area" id="text-area" class="m-3"></textarea>
+        <textarea name="text-area" id="text-area" class="m-3 w-50 h-50 fs-2"></textarea>
         <button class="btn btn-outline-light" id="btn">Click Me!</button>
     </main>
 
     <script>
         let btn = document.getElementById("btn");
-        let text_area = document.getElementById("text-area");
+        let textArea = document.getElementById("text-area");
 
         btn.addEventListener("click",()=>{
-            console.log(text_area.value)
+            textValue = textArea.value;
+            // console.log(textValue)
+            let splitValue = textValue.split("\n");
+            // console.log(splitValue.entries())
+            for(const [i , row] of splitValue.entries()){
+               let toCamel =  row.trim().split("_");
+               let [first , second] = toCamel;
+               console.log((first[0].toUpperCase() + first.slice(1) + second[0].toUpperCase() + second.slice(1)).padEnd(20) + `❤️`.repeat(i + 1))
+            }
         })
     </script>
     
