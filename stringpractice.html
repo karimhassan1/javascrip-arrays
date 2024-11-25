@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>String practice</title>
+</head>
+<body>
+    
+    <script>
+        let string = `my_name : karimhassan
+                     father_name : Ibrahim
+                     from_ : Ghalegay
+                     dept_ : softwareengineering`;
+        let stringSplit = string.split("\n");
+        for(const indexPresent of stringSplit){
+
+            let [key , value] = indexPresent.trim().split(":");
+            let addkey = key.split("_");
+            let [first,second] = addkey;
+
+            let addthem = first[0].toUpperCase()+first.slice(1)+second[0].toUpperCase()+second.slice(1);
+            let createElement = document.createElement("h5");
+
+            let output = addthem + " : " + value.toUpperCase();
+            createElement.innerText = output;
+
+            document.querySelector("body").appendChild(createElement);
+        }
+
+        
+    </script>
+</body>
+</html>
